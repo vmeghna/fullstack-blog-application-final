@@ -22,7 +22,10 @@ app.use(express.json({ limit: "50mb" }));
 app.use("/api/v1/posts", router);
 app.use("/api/v1/credentials", route);
 
-mongoose.connect("mongodb://127.0.0.1:27017/BlogDB");
+// mongoose.connect("mongodb://127.0.0.1:27017/BlogDB");
+mongoose.connect(
+  "mongodb+srv://megvelusk97:cqn9rN4M6jtQRssU@cluster0.rda337y.mongodb.net/"
+);
 
 app.get("/", (req, res) => {
   res.status(200).send("<h2>Home Page</h2>");

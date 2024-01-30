@@ -12,7 +12,7 @@ const CreateBlog = () => {
   const [message, setMessage] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const {createBlog,imageUrlBase64,setImageUrlBase64} = useBlogs();
+  const {createBlog,imageUrlBase64, setImageUrlBase64} = useBlogs();
   const {
     register,
     handleSubmit,
@@ -31,11 +31,11 @@ const CreateBlog = () => {
     const newBlog = {
       author: { id: uid, name: currentUser },
       ...data,
-      imageUrl:imageUrlBase64
+      imageUrl: imageUrlBase64,
     };
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:3001/api/v1/posts', newBlog);
+      const response = await axios.post(' https://good-gray-yak-tux.cyclic.app/api/v1/posts', newBlog);
       console.log('Blog created successfully:', response.data);
 
       setMessage({ type: 'success', content: 'Blog Created Successfully' });
@@ -49,9 +49,9 @@ const CreateBlog = () => {
     }
   };
   
-const handleFileBase64=({base64})=>{
-  setImageUrlBase64(base64);
-}
+  const handleFileBase64 = ({ base64 }) => {
+    setImageUrlBase64(base64);
+  };
   const handleReset = () => {
     setMessage({});
     scrollToTop();
@@ -154,15 +154,16 @@ const handleFileBase64=({base64})=>{
               errors?.imageUrl?.message ? "input-error" : ""
             }`}
           /> */}
-<FileBase64 
-type="file"
-multiple={false}
-name="imageUrl"
-onDone={handleFileBase64}
-  className={`input input-bordered mb-4  ${
+ <FileBase64
+            type="file"
+            multiple={false}
+            name="imageUrl"
+            onDone={handleFileBase64}
+          
+            className={`input input-bordered ${
               errors?.imageUrl?.message ? "input-error" : ""
             }`}
-          /> 
+          />
            
 
           {errors?.imageUrl?.message && (

@@ -6,10 +6,12 @@ import useMoveToHome from "../hooks/useMoveToHome";
 import Alert from "../ui/Alert";
 import { errorMessages } from "../utils/helperFuntions";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { loginWithEmailAndPwd, loginWithGoogle, setCurrentUser, setUserName } = useAuth();
   const moveToHome = useMoveToHome();
+  const navigate = useNavigate();
 
   const [userCredentials, setUserCredentials] = useState({
     email: "",
@@ -41,7 +43,7 @@ const Login = () => {
     try {
       setLoading(true);
   
-      const response = await axios.post('http://localhost:3001/login', {
+      const response = await axios.post(' https://good-gray-yak-tux.cyclic.app/login', {
         email,
         password,
       });
@@ -56,10 +58,10 @@ const Login = () => {
   
         await loginWithEmailAndPwd(email, password);
         setCurrentUser(userName);
-        moveToHome();
-        // navigate({
-        //   pathname: `/profile/${userId}`,
-        // })
+        // moveToHome();
+        navigate({
+          pathname : `/profile/${userId}`,
+        })
       } else {
         setError(errorMessages.loginFailed);
       }
@@ -138,7 +140,7 @@ const Login = () => {
       <div className="divider"></div>
 
       {/* <GoogleButton handleGoogleLogin={handleGoogleLogin} disabled={loading} /> */}
-<div  className="mt-4 text-sm text-neutral bg-red-200 pt-2 pb-2 rounded-full">
+<div  className="pt-2 pb-2 mt-4 text-sm bg-red-200 rounded-full text-neutral">
   <h2 className="text-[1.8rem] text-red-600 mb-4">view credentials</h2>
   <p className="text-[1.2rem] text-pink-900 mb-4">mail id:  chris@gmail.com</p>
   <p className="text-[1.2rem] text-pink-900 mb-4" >pw:  captainamerica</p>

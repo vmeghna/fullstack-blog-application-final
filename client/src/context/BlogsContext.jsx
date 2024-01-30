@@ -44,7 +44,7 @@ export const BlogsProvider = ({ children }) => {
     try {
       setLoading(true);
       
-      const response = await axios.get('http://localhost:3001/api/v1/posts');
+      const response = await axios.get(' https://good-gray-yak-tux.cyclic.app/api/v1/posts');
       const data = response.data;
       
       setBlogs(data);
@@ -58,7 +58,7 @@ export const BlogsProvider = ({ children }) => {
   const getBlogById = async (id) => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:3001/api/v1/posts/${id}`);
+      const response = await axios.get(` https://good-gray-yak-tux.cyclic.app/api/v1/posts/${id}`);
       const data = response.data;
 
       setLoading(false);
@@ -73,7 +73,7 @@ export const BlogsProvider = ({ children }) => {
 
   const deleteBlog = async (blogId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/v1/posts/${blogId}`);
+      await axios.delete(` https://good-gray-yak-tux.cyclic.app/api/v1/posts/${blogId}`);
       
       setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== blogId));
     } catch (error) {

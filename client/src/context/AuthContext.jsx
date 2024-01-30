@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserDetails = async (email) => {
     try {
-      const response = await axios.get(`http://localhost:3001/userDetails?email=${email}`);
+      const response = await axios.get(` https://good-gray-yak-tux.cyclic.app/userDetails?email=${email}`);
       return response.data;
     } catch (error) {
       console.error("Error fetching user details:", error);
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginWithEmailAndPwd = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3001/login', { email, password });
+      const response = await axios.post(' https://good-gray-yak-tux.cyclic.app/login', { email, password });
       const { success, userDetails } = response.data;
   
       if (success) {
@@ -112,7 +112,7 @@ export const AuthProvider = ({ children }) => {
         //   userId,
         //   name: user.displayName,
         // });
-        await fetch('http://localhost:3001/api/v1/credentials/', {
+        await fetch(' https://good-gray-yak-tux.cyclic.app/api/v1/credentials/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

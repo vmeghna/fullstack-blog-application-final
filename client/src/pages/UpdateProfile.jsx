@@ -26,7 +26,7 @@ const ProfileUpdate = () => {
 
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:3001/api/v1/credentials/${user._id}`, {
+      const response = await fetch(` https://good-gray-yak-tux.cyclic.app/api/v1/credentials/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

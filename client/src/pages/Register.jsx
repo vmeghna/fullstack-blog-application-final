@@ -47,7 +47,7 @@ const Register = () => {
     try {
       setLoading(true);
   
-      await fetch('http://localhost:3001/api/v1/credentials/', {
+      await fetch(' https://good-gray-yak-tux.cyclic.app/api/v1/credentials/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

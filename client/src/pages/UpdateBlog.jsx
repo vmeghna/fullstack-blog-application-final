@@ -16,7 +16,7 @@ const UpdateBlog = () => {
 
     const { _id } = useParams();
   
-    const { getBlogById, updateBlog,imageUrlBase64,setImageUrlBase64 } = useBlogs();
+    const { getBlogById, updateBlog, imageUrlBase64, setImageUrlBase64 } = useBlogs();
     const {
       register,
       handleSubmit,
@@ -57,14 +57,14 @@ const UpdateBlog = () => {
             subtitle: data.subtitle,
             content: data.content,
             tags: Array.isArray(data.tags) ? data.tags.join(",") : data.tags,
-            imageUrl: data.imageUrl,
+            imageUrl: imageUrlBase64,
           },
         };
       
         try {
           setLoading(true);
           const response = await axios.put(
-            `http://localhost:3001/api/v1/posts/${_id}`,
+            ` https://good-gray-yak-tux.cyclic.app/api/v1/posts/${_id}`,
             updatedBlog
           );
           console.log('Blog updated successfully:', response.data);
@@ -79,9 +79,9 @@ const UpdateBlog = () => {
         }
     };
     
-      const handleFileBase64=({base64})=>{
-        setImageUrlBase64(base64);
-      }
+    const handleFileBase64 = ({ base64 }) => {
+      setImageUrlBase64(base64);
+    };
       
   
     const handleReset = () => {
@@ -182,14 +182,13 @@ const UpdateBlog = () => {
           /> */}
 
         
-           <FileBase64
+<FileBase64
             type="file"
             multiple={false}
             name="imageUrl"
-            onDone={handleFileBase64 }
-            
-             
-              className={`w-full input input-bordered  pt-4 ${
+            onDone={handleFileBase64}
+          
+            className={`input input-bordered ${
               errors?.imageUrl?.message ? "input-error" : ""
             }`}
           />

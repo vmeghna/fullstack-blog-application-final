@@ -8,10 +8,12 @@ const Profile = () => {
   const {user, setUser} = useAuth();
 
   useEffect(() => {
+
     const fetchUserDetails = async () => {
       try {
         const response = await getUserById(id);
         setUser(response);
+        localStorage.setItem("user", JSON.stringify(response));
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
